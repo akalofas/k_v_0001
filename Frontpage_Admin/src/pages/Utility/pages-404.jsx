@@ -1,13 +1,42 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import { Container, Row, Col } from "reactstrap"
+
 
 //Import Images
 import error from "../../assets/images/error-img.png"
 
+export function useCountdown() {
+  let [remaining, setRemaining] = useState('6');
+
+  useEffect(() => {
+    function tick() {
+      setRemaining(remaining - 1);
+    }
+
+    const countdown = setInterval(tick, 1000);
+
+    if (remaining < 0) {
+      clearInterval(countdown);
+    }
+
+    return () => clearInterval(countdown);
+  }, [remaining]);
+
+  return remaining;
+}
+
+
 const Pages404 = () => {
+    const navigate = useNavigate()
+    useEffect(() => {
+      setTimeout(() => {
+        navigate('/')
+      }, 6000)
+    }, [])
+    const countdown = useCountdown();
     //meta title
-    document.title = "404 Error Page | Skote - Vite React Admin & Dashboard Template";
+    document.title = "404 Error Page | EliteForm";
 
   return (
     <React.Fragment>
@@ -20,7 +49,8 @@ const Pages404 = () => {
                   4<i className="bx bx-buoy bx-spin text-primary display-3" />
                   4
                 </h1>
-                <h4 className="text-uppercase">Sorry, page not found</h4>
+                <h4 className="text-uppercase">Sorry, the page was not found</h4>
+                <p>Automatic redirect in{" "}<span style={{ fontSize: "24px" }}>{countdown}</span> seconds.</p>
                 <div className="mt-5 text-center">
                   <Link
                     className="btn btn-primary "

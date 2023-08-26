@@ -53,7 +53,21 @@ let users = [
     username: "admin",
     role: "admin",
     password: "123456",
-    email: "admin@themesbrand.com",
+    email: "admin@eliteform.gr",
+  },
+  {
+    uid: 2,
+    username: "sales",
+    role: "admin",
+    password: "123456",
+    email: "sales@eliteform.gr",
+  },
+  {
+    uid: 3,
+    username: "customer",
+    role: "admin",
+    password: "123456",
+    email: "customer@eliteform.gr",
   },
 ];
 

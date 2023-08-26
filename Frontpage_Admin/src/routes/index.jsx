@@ -345,7 +345,7 @@ const publicRoutes = [
   { path: "/pages-404", component: <Pages404 /> },
   { path: "/pages-500", component: <Pages500 /> },
   { path: "/crypto-ico-landing", component: <CryptoIcoLanding /> },
-
+ 
   //   // Authentication Inner
   { path: "/pages-login", component: <Login1 /> },
   { path: "/pages-login-2", component: <Login2 /> },
@@ -366,6 +366,7 @@ const publicRoutes = [
     path: "/auth-two-step-verification-2",
     component: <TwostepVerification2 />,
   },
+  { path: "*", exact: true, component: <Pages404 /> },
 ];
 
 export { authProtectedRoutes, publicRoutes };
