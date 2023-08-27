@@ -24,7 +24,7 @@ import {
 } from "reactstrap";
 
 // actions
-import { loginUser, socialLogin } from "../../store/actions";
+import { loginUser} from "../../store/actions";
 
 // import images
 import profile from "../../assets/images/profile-img.png";
@@ -56,10 +56,6 @@ const Login = (props) => {
     error: state.Login.error,
   }));
 
-  const signIn = type => {
-    dispatch(socialLogin(type, props.router.navigate));
-  };
- 
   return (
     <React.Fragment>
       <div className="home-btn d-none d-sm-block">

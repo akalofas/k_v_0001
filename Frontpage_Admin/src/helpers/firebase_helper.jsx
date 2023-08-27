@@ -113,27 +113,6 @@ class FirebaseAuthBackend {
     });
   };
 
-  /**
-   * Social Login user with given details
-   */
-
-  socialLoginUser = async (type) => {
-    let provider;
-    if (type === "google") {
-        provider = new firebase.auth.GoogleAuthProvider();
-    } else if (type === "facebook") {
-        provider = new firebase.auth.FacebookAuthProvider();
-    }
-    try {
-        const result = await firebase.auth().signInWithPopup(provider);
-        const user = result.user;
-        return user;
-    } catch (error) {
-        throw this._handleError(error);
-    }
-};
-
-
   addNewUserToFirestore = (user) => {
     const collection = firebase.firestore().collection("users");
     const { profile } = user.additionalUserInfo;
